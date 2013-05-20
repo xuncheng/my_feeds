@@ -26,6 +26,16 @@ describe MyFeeds do
       @user2.write_post_feeds.first.event.should == 'write_post'
       (@user2.write_post_feeds.count + @user2.write_some_code_feeds.count).should == @user2.source_feeds.count
     end
+
+    it 'should generate Identity correctly' do
+      @user2.write_some_code_feeds.each do |f|
+        f.source_identity.should eq("#{f.source_type.underscore}:#{f.source_id}")
+      end
+
+      @user2.write_post_feeds.each do |f|
+        f.source_identity.should eq("#{f.source_type.underscore}:#{f.source_id}")
+      end
+    end
   end
 
 
