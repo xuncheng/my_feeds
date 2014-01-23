@@ -3,7 +3,7 @@ module MyFeeds
     extend ActiveSupport::Concern
 
     included do
-      has_many :source_feeds, class_name: Feed.to_s, as: :source, dependent: :destroy
+      has_many :source_feeds, class_name: "Feed", as: :source, dependent: :destroy
     end
 
     module ClassMethods
