@@ -2,10 +2,6 @@ module MyFeeds
   module Feeder
     extend ActiveSupport::Concern
 
-    included do
-      has_many :source_feeds, class_name: "Feed", as: :source, dependent: :destroy
-    end
-
     module ClassMethods
       def define_feed_event event, conditions = {}
         conditions.freeze
